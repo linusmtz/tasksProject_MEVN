@@ -1,7 +1,7 @@
 var UserModel =require('../models/User');
 var jwt = require('jsonwebtoken');
 var bcryptjs = require('bcryptjs');
-
+const {refreshCookieToken} = require('../utils/cookieToken');
 
 async function login(req,res){
     try{
@@ -18,7 +18,12 @@ async function login(req,res){
                 res.status(400).send({msg:"Wrong password",estatus:0});
                 throw new Error('Wrong password')
             }else{
+
+                refreshCookieToken(user.id,res);
+                //console.log(res)
+
                 res.status(200).send({msg:"Logged in",estatus:1,data:user});
+
             }
         }
     }catch(error){

@@ -8,8 +8,6 @@ require('dotenv').config();
 
 var app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var crudRouter = require('./routes/crud');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
@@ -30,8 +28,6 @@ app.use('/register',registerRouter);
 
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 
 mongoose.connect(process.env.URI_MONGO)
