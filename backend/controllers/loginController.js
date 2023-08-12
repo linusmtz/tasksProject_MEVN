@@ -18,7 +18,7 @@ async function login(req,res){
                 res.status(400).send({msg:"Wrong password",estatus:0});
                 throw new Error('Wrong password')
             }else{
-                res.status(200).send({msg:"Logged in",estatus:1});
+                res.status(200).send({msg:"Logged in",estatus:1,data:user});
             }
         }
     }catch(error){

@@ -7,11 +7,11 @@ async function register(req,res){
 
         if(user){
             res.status(400).send({msg:"user doesn't exist",estatus:0});
-            throw new Error("User doesn't exist");
+           // throw new Error("User doesn't exist");
         }else{
             const newUser = new UserModel({username,password,email});
             await newUser.save();
-            res.status(200).send({msg:"user created succesfully",estatus:1});
+            res.status(200).send({msg:"user created succesfully",estatus:1,data:{}});
         }
     }catch(error){
         console.log(error);

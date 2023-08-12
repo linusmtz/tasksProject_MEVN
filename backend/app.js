@@ -25,8 +25,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/',crudRouter);
-app.use('/',loginRouter);
-app.use('/',registerRouter);
+app.use('/login',loginRouter);
+app.use('/register',registerRouter);
 
 
 
