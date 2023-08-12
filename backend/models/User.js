@@ -1,6 +1,21 @@
 var mongoose = require('mongoose');
 var bcryptjs = require('bcryptjs');
 
+const taskSchema = new mongoose.Schema({
+    title:{
+        type:String,
+        required:true
+    },
+    content:{
+        type:String,
+        required:true
+    },
+    status:{
+        type:String,
+        required:true
+    }
+})
+
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -14,7 +29,15 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
         trim:true
-    }
+    },
+    email:{
+        type:String,
+        required:true,
+        trim:true,  
+        unique:true,   
+        lowercase:true
+    },
+    tasks:[taskSchema]
 })
 
 userSchema.pre("save",async function(next){
@@ -29,7 +52,7 @@ userSchema.pre("save",async function(next){
         next();
     }catch(err){
         console.log(err);
-        throw new Error('fallo el hash de contrasena')
+        throw new Error('Error')
     }
 })
 
