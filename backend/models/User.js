@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
         unique:true,   
         lowercase:true
     },
-    tasks:[taskSchema]
+    tasks:Array
 })
 
 userSchema.pre("save",async function(next){
