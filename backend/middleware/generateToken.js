@@ -9,12 +9,13 @@ function validToken(req,res,next){
             throw new Error('there is no token in headers');
         }
 
-        console.log(token);
+        //console.log(token);
 
         const payload = jwt.verify(token,process.env.JWT_REFRESH);
         
-        console.log(payload);
+        //console.log(payload);
         req.userid = payload.userid;
+        
         next();
     }catch(error){
         console.log(error);
