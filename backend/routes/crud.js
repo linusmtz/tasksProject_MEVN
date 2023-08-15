@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const {validToken} = require('../middleware/generateToken');
-const {getAllUserTasks} = require('../controllers/searchingControllers');
+const {getAllUserTasks,getUserByTitle} = require('../controllers/searchingControllers');
 
 
 
@@ -10,6 +10,8 @@ router.get('/',validToken,(req,res)=>{
 });
 
 router.get('/tasks',validToken,getAllUserTasks);
+router.get('/tasks/name',validToken,getUserByTitle)
+
 /*
 router.get('/task')
 

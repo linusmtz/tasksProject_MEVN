@@ -3,7 +3,7 @@ var UserModel =require('../models/User');
 async function register(req,res){
     try{
         //get data from request
-        var {username,password,email} = req.body;
+        var {username,password,email,tasks} = req.body;
 
         //check if user exists
         const user = await UserModel.findOne({username:username});
@@ -12,13 +12,14 @@ async function register(req,res){
             res.status(400).send({msg:"user already exists",estatus:0});
         }else{
             //we create an object with data from request
-            const newUser = new UserModel({username,password,email});
+            const newUser = new UserModel({username,password,email,tasks});
 
             //save object in database
             await newUser.save();
             
             //response
-            res.status(200).send({msg:"user created succesfully",estatus:1,data:{}});
+            console.log(newUser)
+            res.status(200).send({msg:"user created succesfully",estatus:1,data:user});
         }
     }catch(error){
         console.log(error);
