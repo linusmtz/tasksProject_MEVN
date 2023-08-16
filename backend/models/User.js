@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var bcryptjs = require('bcryptjs');
-
+/*
 const taskSchema = new mongoose.Schema({
     title:{
         type:String,
@@ -15,7 +15,7 @@ const taskSchema = new mongoose.Schema({
         required:true
     }
 })
-
+*/
 
 const userSchema = new mongoose.Schema({
     username:{
@@ -37,7 +37,27 @@ const userSchema = new mongoose.Schema({
         unique:true,   
         lowercase:true
     },
-    tasks:[taskSchema]
+    tasks:[
+        {
+            title:{
+                type:String,
+                required:true
+            },
+            content:{
+                type:String,
+                required:true
+            },
+            status:{
+                type:String,
+                required:true
+            }
+
+        }
+
+
+    ]
+    
+    //[taskSchema]
 })
 
 userSchema.pre("save",async function(next){

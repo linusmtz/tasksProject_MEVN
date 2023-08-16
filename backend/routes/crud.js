@@ -10,7 +10,7 @@ router.get('/',validToken,(req,res)=>{
 });
 
 router.get('/tasks',validToken,getAllUserTasks);
-router.get('/tasks/name',validToken,getUserByTitle)
+router.get('/tasks/name',validToken,getUserByTitle) // edit this route
 
 /*
 router.get('/task')
