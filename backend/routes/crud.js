@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const {validToken} = require('../middleware/generateToken');
 const {getAllUserTasks,getUserByTitle} = require('../controllers/searchingControllers');
+const { createTask } = require('../controllers/createTaskController');
 
 
 
@@ -12,11 +13,12 @@ router.get('/',validToken,(req,res)=>{
 router.get('/tasks',validToken,getAllUserTasks);
 router.get('/tasks/name',validToken,getUserByTitle) // edit this route
 
+router.post('/task',validToken,createTask);
+
 /*
-router.get('/task')
 
 
-router.post('/task',validToken,createTaskController);
+
 router.put('/tasks');
 router.delete('/tasks');
 
