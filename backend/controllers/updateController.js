@@ -16,7 +16,7 @@ async function editTask(req,res){
                 task.title = title;
                 task.content = content;
                 task.status = status;    
-                console.log(task + ' peneee');
+                console.log(task + 'XD');
             }
         });
         await user.save();
