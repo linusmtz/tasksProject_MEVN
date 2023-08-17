@@ -11,7 +11,7 @@ var app = express();
 var crudRouter = require('./routes/crud');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
-
+var logoutRouter = require('./routes/logout');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +25,7 @@ app.use(cookieParser());
 app.use('/',crudRouter);
 app.use('/login',loginRouter);
 app.use('/register',registerRouter);
+app.use('/',logoutRouter);
 
 
 
