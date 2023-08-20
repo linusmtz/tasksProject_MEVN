@@ -1,9 +1,12 @@
 var jwt = require('jsonwebtoken');
 
-function refreshCookieToken(userid,res){
+function refreshCookieToken(payload,res){
     const expiresIn = 60*60*3; //3 hours
     try{
-        const cookieRefresh = jwt.sign({userid:userid},process.env.JWT_REFRESH,{expiresIn});
+        
+        //we sign the token with id and username of user
+
+        const cookieRefresh = jwt.sign({id:payload.id,username:payload.username},process.env.JWT_REFRESH,{expiresIn});
         res.cookie("cookieToken",cookieRefresh,{
             httpOnly:true,
          //   secure:!(process.env.MODE ==="developer"),

@@ -25,7 +25,7 @@ async function login(req,res){
             }else{
                 
                 //we store cookie token 
-                refreshCookieToken(user.id,res);
+                refreshCookieToken({id:user.id,username:user.username},res);
 
                 //response
                 //modify the data that is sent in response

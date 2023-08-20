@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const {validToken} = require('../middleware/generateToken');
-const {getAllUserTasks,getUserByTitle} = require('../controllers/searchingControllers');
-const { createTask } = require('../controllers/createTaskController');
-const { editTask } = require('../controllers/updateController');
+const {getAllUserTasks,getUserByTitle} = require('../controllers/TaskControllers/searchingControllers');
+const { createTask } = require('../controllers/TaskControllers/createTaskController');
+const { editTask } = require('../controllers/TaskControllers/updateController');
 
 
 
