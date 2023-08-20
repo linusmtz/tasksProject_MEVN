@@ -1,7 +1,7 @@
-var UserModel =require('../models/User');
+var UserModel =require('../../models/User');
 var jwt = require('jsonwebtoken');
 var bcryptjs = require('bcryptjs');
-const {refreshCookieToken} = require('../utils/cookieToken');
+const {refreshCookieToken} = require('../../utils/cookieToken');
 
 async function login(req,res){
     try{
@@ -13,18 +13,14 @@ async function login(req,res){
 
         //user does not exist
         if(!user){
-            res.status(400).send({msg:"user not found",estatus:0});
-            throw new Eror('User not registered')
-        
+            throw new Error('User not registered')
         }else{ //user exists
 
-        
             //we compare req.password and real password from the user -- true/false
             const result = await bcryptjs.compare(password,user.password);
 
             //it's not the same password
             if(!result){
-                res.status(400).send({msg:"Wrong password",estatus:0});
                 throw new Error('Wrong password')
             }else{
                 
@@ -32,13 +28,18 @@ async function login(req,res){
                 refreshCookieToken(user.id,res);
 
                 //response
+                //modify the data that is sent in response
                 res.status(200).send({msg:"Logged in",estatus:1,data:user});
 
             }
         }
     }catch(error){
         console.log(error);
-        res.status(400).send({msg:"error",estatus:0});
+        if(error==='Wrong password' || error ==='User not registered'){
+            res.status(400).send({msg:"Authenticacion failed",estatus:0,data:{}});
+        }else{
+            res.status(500).send({msg:"Internal server error",estatus:0,data:{}});
+        }
     }
 }
 

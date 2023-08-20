@@ -18,6 +18,11 @@ const taskSchema = new mongoose.Schema({
 */
 
 const userSchema = new mongoose.Schema({
+    role:{
+        type:String,
+        required:true,
+        lowercase:true
+    },
     username:{
         type:String,
         required:true,
