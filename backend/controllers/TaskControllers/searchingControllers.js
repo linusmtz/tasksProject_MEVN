@@ -51,7 +51,55 @@ async function getUserByTitle(req,res){
 
 
 }
+
+//get sorted tasks a-z by title
+async function getSortedTasks(req,res){
+    
+    try{
+
+        const {username} = req.body;
+
+    
+        const user = await UserModel.findOne({username});
+    
+        const orderedTasks = user.tasks.sort((a,b)=>a.title.localeCompare(b.title));
+    
+        res.status(200).send({msg:"ok",estatus:1,data:orderedTasks});
+
+
+    }catch(error){
+        res.status(400).send({msg:"ok",estatus:0,data:{}})
+    }
+    
+}
+
+async function getTasksByStatus(req,res){
+
+    try {
+        const {username,status} = req.body;
+        const user = await UserModel.findOne({username});
+    
+        const tasks = user.tasks.filter((task)=>task.status===status);
+    
+        res.status(200).send({msg:"ok",estatus:1,data:orderedTasks});    
+        
+    } catch (error) {
+        res.status(400).send({msg:"ok",estatus:0,data:{}})
+   
+    }
+
+
+
+
+
+
+}
+
+
+
 module.exports = {
     getAllUserTasks,
-    getUserByTitle
+    getUserByTitle,
+    getSortedTasks,
+    getTasksByStatus
 }

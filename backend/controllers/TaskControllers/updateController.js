@@ -4,13 +4,18 @@ var UserModel = require('../../models/User');
 
 async function editTask(req,res){
     try{
+        //edit task exists if task exist
+
         const {title,content,status,username} = req.body;
         
+        //find user
         const user = await UserModel.findOne({username});
         console.log(user);
 
+        // we need to send taskid
         const taskid = req.body.taskid;
 
+        //iterate over the tasks to find the one we want to edit
         user.tasks.find(task=>{
             if(task._id.toString()===taskid){
                 task.title = title;
@@ -25,7 +30,7 @@ async function editTask(req,res){
 
     }catch(error){
         console.log(error);
-        res.status(400).send({msg:"error",estatus:0});            
+        res.status(400).send({msg:"error",estatus:0,data:{}});            
     }
 }
 

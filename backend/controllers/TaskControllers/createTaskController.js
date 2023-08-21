@@ -7,19 +7,19 @@ async function createTask(req,res){
         const {username,title,content,status} = req.body;
         console.log(req.body);
 
-        //
+        //push task into user's taks 
         const result = await UserModel.updateOne({username:username},{$push:{tasks:{title,content,status}}});
 
         console.log(result);
+        //if we get the validation
         if(result.modifiedCount){
             res.status(200).send({msg:"task created succesfully",estatus:1,data:result});
         }else{
-            res.status(400).send({msg:"error",estatus:0});            
+            throw new Error('cannot create task')           
         }
     }catch(error){
         console.log(error);
-        res.status(400).send({msg:"error",estatus:0});
-
+        res.status(400).send({msg:"error",estatus:0,data:{}});
     }
 
 }
