@@ -4,6 +4,6 @@ var {logout} = require('../controllers/AuthControllers/logoutController');
 
 
 
-router.get('/logout',logout);
+router.get('/',logout);
 
 module.exports = router;

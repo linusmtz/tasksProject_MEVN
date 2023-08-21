@@ -27,11 +27,11 @@ async function getUserByTitle(req,res){
         //if user has one task with unique title
         //const task = user.tasks.find(task=>task.title===req.body.task);
 
-
         //user has two or more tasks with same title
+        console.log(req.body.task);
         const tasksSameTitle = user.tasks.filter(task=>task.title==req.body.task);
         console.log(tasksSameTitle);
-
+        
         if(tasksSameTitle.length){
             res.status(200).send({msg:"ok",data:tasksSameTitle,estatus:1});
         }else{
@@ -79,18 +79,14 @@ async function getTasksByStatus(req,res){
         const {username,status} = req.body;
         const user = await UserModel.findOne({username});
     
+        
         const tasks = user.tasks.filter((task)=>task.status===status);
     
-        res.status(200).send({msg:"ok",estatus:1,data:orderedTasks});    
+        res.status(200).send({msg:"ok",estatus:1,data:tasks});    
         
     } catch (error) {
-        res.status(400).send({msg:"ok",estatus:0,data:{}})
-   
+        res.status(400).send({msg:"ok",estatus:0,data:{}})   
     }
-
-
-
-
 
 
 }
