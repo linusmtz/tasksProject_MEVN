@@ -1,31 +1,38 @@
-
 <script setup>
     import { ref } from 'vue';
-    
+    import Card from 'primevue/card';
+    import InputText from 'primevue/inputtext';
+    const username = ref('');
+    const password = ref('');
+
 
 </script>
 <template>
-    <!--
-    <div class="flex">
-        <div class="flex-column flex-grow-0 flex-shrink-0 flex-basis bg-green-300 h-24rem">
-            hola
-        </div>
-        <div class="flex-grow-1">
-            pene
-        </div>
-        <div class="flex-column flex-grow-0 bg-green-300">
-            hola
-        </div>
-
-    </div>
-    -->
-    <div class="grid h-24rem">
-        <div class="col-2 bg-green-300 ">1</div>
-        <div class="col-8 ">2</div>
-        <div class="col-2 bg-green-300">3</div>
-
-    </div>
     
+    <Card class="flex justify-content-center align-items-center" style="height: 650px;">
+            <template #title> 
+                <div class="flex justify-content-center">
+                    Login 
+                </div> 
+            </template>
+            <template #content>
+                <div class="flex justify-content-center">
+                    <span class="p-float-label mb-5 ">
+                        <InputText id="username" v-model="username" />
+                        <label for="username">Username</label>
+                    </span>
+                </div>
+                <div class="flex justify-content-center">
+                    <span class="p-float-label ">
+                        <InputText id="password" v-model="password" />
+                        <label for="password">Password</label>
+                    </span>
+                </div>
+            </template>   
+    </Card>
+
+
+        
 </template>
 
 <style>

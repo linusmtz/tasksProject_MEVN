@@ -8,10 +8,10 @@ import router from './router'
 import 'primevue/resources/primevue.min.css'  
 import '../node_modules/primeflex/primeflex.css' 
 import 'primeicons/primeicons.css' 
-
 import "primevue/resources/themes/lara-light-indigo/theme.css";
 
 const app = createApp(App)
+
 
 
 app.use(createPinia())
