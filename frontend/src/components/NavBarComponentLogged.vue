@@ -46,7 +46,7 @@
         
         {
             label: 'Logout',
-            icon: 'pi pi-fw pi-power-off',
+            icon: 'pi pi-fw pi-sign-out',
             url:'/logout'
         }
     ]);

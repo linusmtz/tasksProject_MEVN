@@ -14,8 +14,13 @@
         },
         {
             label:'Contact',
-            icon:'',
+            icon:'pi pi-envelope',
             url:'/contact'
+        },
+        {
+            label:'Login',
+            icon:'pi pi-sign-in',
+            url:'/login'
         }
         
     ]);
@@ -24,8 +29,8 @@
 
 <template>
 
-    <div class="flex-auto">
-            <Menubar :model="items" class="justify-content-around"/>
+    <div class="flex-auto h-10rem">
+            <Menubar :model="items" class="h-5rem justify-content-around"/>
     </div>
 
 

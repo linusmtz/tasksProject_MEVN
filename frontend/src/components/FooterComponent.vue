@@ -3,7 +3,7 @@ import Card from 'primevue/card';
 
 </script>
 <template>
-    <Card class="bg-green-400 flex-column w-full flex h-full">
+    <Card class="bg-green-400 flex-column h-10rem">
         <template #content>
                     <div class="flex justify-content-center ">
                         <span class="p-float-label mb-5 ">
