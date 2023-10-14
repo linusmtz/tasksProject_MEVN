@@ -1,9 +1,17 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+    import NavBarComponent from '../components/NavBarComponent.vue';
+    import HomeComponent from '../components/HomeComponent.vue';
+    import FooterComponent from '../components/FooterComponent.vue';
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
+        <NavBarComponent/>
+        <div class="flex-column" style="height: 100%;">
+            <HomeComponent/>
+        </div>
+        <div class="flex-column" style="height: 100%;">
+            <FooterComponent/>
+        </div>
+    </main>
 </template>
